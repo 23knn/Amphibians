@@ -9,12 +9,17 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.key.Key.Companion.Home
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.amphibians.ui.screens.HomeScreen
 import com.example.amphibians.ui.theme.AmphibiansTheme
+import com.example.amphibians.ui.viewmodels.AmphibianViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
             AmphibiansTheme {
                 // A surface container using the 'background' color from the theme
@@ -22,22 +27,10 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+                    var amphibianViewModel : AmphibianViewModel = viewModel(factory = AmphibianViewModel.Factory)
+                    HomeScreen(uiState = amphibianViewModel.uiState)
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    AmphibiansTheme {
-        Greeting("Android")
     }
 }
