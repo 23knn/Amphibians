@@ -10,6 +10,6 @@ import com.example.amphibians.models.Amphibian
 @Composable
 fun AmphibiansList(amphibians : List<Amphibian>, modifier: Modifier = Modifier) {
     LazyColumn {
-        items(amphibians) {it -> Text(it.toString())}
+        items(amphibians) {it -> AmphibianItem(amphibian = it)}
     }
 }

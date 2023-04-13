@@ -9,5 +9,6 @@ interface AmphibianRepository {
 
 class AmphibianNetworkRepository (private val retrofitService : AmphibiansInfoService) : AmphibianRepository{
     override suspend fun getAmphibians() : List<Amphibian> = retrofitService.getAmphibians()
-    // we're equating the first function to the second. so when the first is called, it calls the second. i.e the first returns what the second returns
+    // we're equating the first function to the second. so when the first is called, it calls the second.
+    // i.e the first returns what the second returns
 }
